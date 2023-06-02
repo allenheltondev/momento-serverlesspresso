@@ -1,0 +1,15 @@
+{
+  "name": "cache-order-detail",
+  "version": "1.0.0",
+  "description": "Caches order details prior to fulfilling the order",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "allenheltondev",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.345.0",
+    "@gomomento/sdk": "^1.23.0"
+  }
+}

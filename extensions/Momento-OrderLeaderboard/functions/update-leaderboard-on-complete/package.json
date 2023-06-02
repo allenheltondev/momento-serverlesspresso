@@ -1,0 +1,15 @@
+{
+  "name": "update-leaderboard-on-complete",
+  "version": "1.0.0",
+  "description": "Updates all the drink leaderboards when a drink is completed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "allenheltondev",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.345.0",
+    "@gomomento/sdk": "^1.23.0"
+  }
+}

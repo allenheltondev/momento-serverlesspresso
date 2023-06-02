@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Serverless patterns - Service to Service description
+
+Parameters:  
+  MomentoAPIToken:
+    Type: String
+    Description: API Token for interacting with Momento. https://console.gomomento.com
+    NoEcho: true
+  CacheTimeToLive:
+    Type: Number
+    Description: Time to live for items added to Momento
+    Default: 72000
+
+Globals:
+  Function:
+    Timeout: 5
+    Runtime: nodejs18.x
+    MemorySize: 1024
+    Tracing: Active
+    Architectures:
+      - arm64
+    Handler: index.handler
+    Environment:
+      Variables:
+        AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+
+# Comment each resource section to explain usage
+Resources:
+  # Stores the API token for authenticating with Momento
+  MomentoSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:      
+      SecretString:
+        Fn::Sub:
+          - |-
+            {
+              "momento": "${momentoAPIToken}"
+            }
+          - signature: !Ref JwtSecret
+            momentoAPIToken: !Ref MomentoAPIToken
+
+# List all common outputs for usage
+Outputs:
+
+
